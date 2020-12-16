@@ -277,7 +277,7 @@ SELECT
 /*==============================================================*/
 /*Cantidad de veces por cada sala de velación en donde se alquile el espacio y no se venda el ataúd.*/
 SELECT 
-  reserva_detalle.velatorio_id, 
+  reserva_detalle.velatorio_id, as cantidad_arquilada
   count(servicio.ser_ventaataud) as cantidad_de_veces
 FROM 
   public.reserva_detalle 
