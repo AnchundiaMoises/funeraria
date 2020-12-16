@@ -1,0 +1,317 @@
+/*==============================================================*/
+/* Table: CLIENTE                                               */
+/*==============================================================*/
+create table CLIENTE (
+   CLI_ID               INT                  not null,
+   CLI_NOMBRE           CHAR(50)             not null,
+   CLI_APELLIDO         CHAR(50)             not null,
+   constraint PK_CLIENTE primary key (CLI_ID)
+);
+
+/*==============================================================*/
+insert into CLIENTE values(1,'Cristopher','Anchundia');
+insert into CLIENTE values(2,'Jose','Rivera');
+insert into CLIENTE values(3,'Belen','Macias');
+insert into CLIENTE values(4,'Mario','Vera');
+insert into CLIENTE values(5,'Noel','River');
+insert into CLIENTE values(6,'Yeli','Vera');
+
+/*==============================================================*/
+/* Table: EMPLEADO                                              */
+/*==============================================================*/
+create table EMPLEADO (
+   EM_ID                INT                  not null,
+   PR_ID                INT                  not null,
+   EM_NOMBRE            TEXT                 not null,
+   EM_APELLIDO          TEXT                 not null,
+   EM_DIRECCION         TEXT                 not null,
+   EM_FNACIMIENTO       DATE                 not null,
+   EM_FINGRESOLABORAL   DATE                 not null,
+   constraint PK_EMPLEADO primary key (EM_ID)
+);
+
+/*==============================================================*/
+insert into EMPLEADO values(1,1,'Moises','Anchundia','calle 100 av 20A','2019-01-19','2011-11-01');
+insert into EMPLEADO values(2,2,'Dayannara','Rivera','calle 100 av 20A','2019-01-19','2011-11-01');
+insert into EMPLEADO values(3,3,'Joselin','Macias','calle 100 av 20A','2019-01-19','2011-11-01');
+insert into EMPLEADO values(4,4,'Jefferson','Vera','calle 100 av 20A','2019-01-19','2011-11-01');
+insert into EMPLEADO values(5,5,'Sara','River','calle 100 av 20A','2019-01-19','2011-11-09');
+insert into EMPLEADO values(6,6,'Josselin','Vera','calle 100 av 20A','2019-01-19','2011-11-01');
+
+/*==============================================================*/
+/* Table: PROFESIONAL_REGISTRADO                                */
+/*==============================================================*/
+create table PROFESIONAL_REGISTRADO (
+   PR_ID                INT                  not null,
+   EM_ID                INT                  null,
+   PR_EMBALSAMIENTO     CHAR(50)             null,
+   PR_MAQUILLAJE        CHAR(50)             null,
+   constraint PK_PROFESIONAL_REGISTRADO primary key (PR_ID)
+);
+
+/*==============================================================*/
+insert into PROFESIONAL_REGISTRADO values(1,1,'null',null);
+insert into PROFESIONAL_REGISTRADO values(2,2,null,'SI');
+insert into PROFESIONAL_REGISTRADO values(3,3,'null','null');
+insert into PROFESIONAL_REGISTRADO values(4,4,'null',null);
+insert into PROFESIONAL_REGISTRADO values(5,5,'SI',null);
+insert into PROFESIONAL_REGISTRADO values(6,6,null,'null');
+
+/*==============================================================*/
+/* Table: TIP_EMPLEADO                                          */
+/*==============================================================*/
+create table TIP_EMPLEADO (
+   TIP_ID               INT                  not null,
+   EM_ID                INT                  not  null,
+   TIP_DESCRIPCION      CHAR(30)             not null,
+   constraint PK_TIP_EMPLEADO primary key (TIP_ID)
+);
+
+/*==============================================================*/
+insert into TIP_EMPLEADO values(1,1,'Vendedor');
+insert into TIP_EMPLEADO values(2,2,'Profecional');
+insert into TIP_EMPLEADO values(3,3,'Limpieza');
+insert into TIP_EMPLEADO values(4,4,'Vendedor');
+insert into TIP_EMPLEADO values(5,5,'Profecional');
+insert into TIP_EMPLEADO values(6,6,'Vendedor');
+
+/*==============================================================*/
+/* Table: VELATORIO                                             */
+/*==============================================================*/
+create table VELATORIO (
+   VELATORIO_ID         INT                   not null,
+   VELATORIO_DIMENCIONES CHAR(100)            not null,
+   VELATORIO_DIRECCION  CHAR(100)             not null,
+   VELATORIO_CAPACIDAD_P DECIMAL              not null,
+   VERATORIO_HORARESERVA TIME                 not null,
+   constraint PK_VELATORIO primary key (VELATORIO_ID)
+);
+	
+/*==============================================================*/
+
+insert into VELATORIO values(1,'10x15','Av 16 calle 40-21','10.00','13:45:15');
+insert into VELATORIO values(2,'20x15','Av 16 calle 40-21',50.00,'13:45:15');
+insert into VELATORIO values(3,'8x15','Av 16 calle 40-21',40.00,'13:45:15');
+insert into VELATORIO values(4,'9x10','Av 16 calle 40-21',35.00,'13:45:15');
+insert into VELATORIO values(5,'10x15','Av 16 calle 40-21',25.00,'13:45:15');
+insert into VELATORIO values(6,'10x15','Av 16 calle 40-21',25.00,'13:45:15');
+
+
+/*==============================================================*/
+/* Table: SERVICIO                                              */
+/*==============================================================*/
+create table SERVICIO (
+   SER_ID               INT                  not null,
+   RD_ID                INT                   null,
+   SER_ACOMPANAMIENTOMUSICAL CHAR(2)              null,
+   SER_COMIDA           CHAR(2)              null,
+   SER_TRANSPORTECEMENTERIO CHAR(2)              null,
+   SER_VENTAATAUD       CHAR(2)              null,
+   SER_MAQUINACAFE      CHAR(2)              null,
+   SER_COSTO            FLOAT                null,
+   constraint PK_SERVICIO primary key (SER_ID)
+);
+
+/*==============================================================*/
+insert into SERVICIO values(1,1,'si','si','si','si','si',205.00);
+insert into SERVICIO values(2,2,'si','si',null,null,'si',250.00);
+insert into SERVICIO values(3,3,null,'si','si',null,'si',260.00);
+insert into SERVICIO values(4,4,'si',null,'si','si','si',355.00);
+insert into SERVICIO values(5,5,'si',null,null,'si','si',145.00);
+insert into SERVICIO values(6,6,null,null,null,null,null,0);
+
+/*==============================================================*/
+/* Table: FALLESIDO                                             */
+/*==============================================================*/
+create table FALLESIDO (
+   F_ID                 INT                  not null,
+   RD_ID                INT                  null,
+   F_NOMBRE             CHAR(50)             not null,
+   F_APELLIDO           CHAR(50)             not null,
+   F_GENERO             CHAR(30)             not null,
+   F_FECHANACIMIENTO    DATE                 not null,
+   F_DIFUNCION          CHAR(100)            not null,
+   F_HORADIFUNCION      TIME                 not null,
+   F_HORAEMBALSAMIENTO  TIME                 not null,
+   constraint PK_FALLESIDO primary key (F_ID)
+);
+
+/*==============================================================*/
+insert into FALLESIDO values(1,1,'Juan','Zambrano','Masculino','12-05-1999','15-10-2019','13:45:15','14:41:15');
+insert into FALLESIDO values(2,2,'Maria','Moreira','Femenino','12-05-1999','15-10-2019','01:35:25','02:15:15');
+insert into FALLESIDO values(3,3,'Doris','Zamora','Femenino','12-05-1999','15-10-2019','11:45:15','12:50:11');
+insert into FALLESIDO values(4,4,'Kevin','Palma','Masculino','12-05-1999','15-10-2019','10:35:15','11:11:15');
+insert into FALLESIDO values(5,5,'David','Peréz','Masculino','12-05-1999','15-10-2019','15:35:15','16:41:15');
+insert into FALLESIDO values(6,6,'Carlos','López','Masculino','12-05-1999','15-10-2019','16:45:15','17:30:25');
+
+/*==============================================================*/
+/* Table: RESERVA_DETALLE                                       */
+/*==============================================================*/
+create table RESERVA_DETALLE (
+   RD_ID                INT                  not null,
+   VELATORIO_ID         INT                  not null,
+   EM_ID                INT                  not null,
+   CLI_ID               INT                  not null,
+   F_ID                 INT                  not null,
+   RD_OBSERVACION       CHAR(100)            null,
+   constraint PK_RESERVA_DETALLE primary key (RD_ID)
+);
+
+/*==============================================================*/
+insert into RESERVA_DETALLE values(1,1,1,1,1,'Ninguno');
+insert into RESERVA_DETALLE values(2,2,2,2,2,'Ninguno');
+insert into RESERVA_DETALLE values(3,3,4,3,3,'Ninguno');
+insert into RESERVA_DETALLE values(4,4,5,4,4,'Ninguno');
+insert into RESERVA_DETALLE values(5,5,6,5,5,'Ninguno');
+insert into RESERVA_DETALLE values(6,6,2,6,6,'Ninguno');
+
+/*==============================================================*/
+/* Table: FACTURA                                               */
+/*==============================================================*/
+create table FACTURA (
+   FAC_ID               INT                  not null,
+   RD_ID                INT                  not null,
+   FAC_FECHA            DATE                 null,
+   constraint PK_FACTURA primary key (FAC_ID)
+);
+
+/*==============================================================*/
+insert into FACTURA values(1,1,'2019-10-15');
+insert into FACTURA values(2,2,'2019-10-15');
+insert into FACTURA values(3,3,'2019-10-15');
+insert into FACTURA values(4,4,'2019-10-15');
+insert into FACTURA values(5,5,'2019-10-15');
+insert into FACTURA values(6,6,'2019-10-15');
+
+/*==============================================================*/
+/* Table: CAUSA_MUERTE                                          */
+/*==============================================================*/
+create table CAUSA_MUERTE (
+   CM_ID                INT                  not null,
+   F_ID                 INT                  not null,
+   CM_CANCER            CHAR(2)              null,
+   CM_COVID             CHAR(2)              null,
+   CM_PULMONIA          CHAR(2)              null,
+   CM_DERAME            CHAR(2)              null,
+   CM_PAROCARDIACO      CHAR(2)              null,
+   constraint PK_CAUSA_MUERTE primary key (CM_ID)
+);
+
+/*==============================================================*/
+insert into CAUSA_MUERTE values(1,1,'si',null,null,null,null);
+insert into CAUSA_MUERTE values(2,2,null,null,null,null,'si');
+insert into CAUSA_MUERTE values(3,3,null,'si',null,null,null);
+insert into CAUSA_MUERTE values(4,4,null,'si',null,null,null);
+insert into CAUSA_MUERTE values(5,5,null,null,'si',null,null);
+insert into CAUSA_MUERTE values(6,6,null,'si',null,'si',null);
+
+/*==============================================================*/
+alter table CAUSA_MUERTE
+   add constraint FK_CAUSA_MU_RELATIONS_FALLESID foreign key (F_ID)
+      references FALLESIDO (F_ID)
+      on delete restrict on update restrict;
+
+alter table EMPLEADO
+   add constraint FK_EMPLEADO_RELATIONS_PROFESIO foreign key (PR_ID)
+      references PROFESIONAL_REGISTRADO (PR_ID)
+      on delete restrict on update restrict;
+
+alter table FACTURA
+   add constraint FK_FACTURA_RELATIONS_RESERVA_ foreign key (RD_ID)
+      references RESERVA_DETALLE (RD_ID)
+      on delete restrict on update restrict;
+
+alter table FALLESIDO
+   add constraint FK_FALLESID_RELATIONS_RESERVA_ foreign key (RD_ID)
+      references RESERVA_DETALLE (RD_ID)
+      on delete restrict on update restrict;
+
+alter table PROFESIONAL_REGISTRADO
+   add constraint FK_PROFESIO_RELATIONS_EMPLEADO foreign key (EM_ID)
+      references EMPLEADO (EM_ID)
+      on delete restrict on update restrict;
+
+alter table RESERVA_DETALLE
+   add constraint FK_RESERVA__RELATIONS_CLIENTE foreign key (CLI_ID)
+      references CLIENTE (CLI_ID)
+      on delete restrict on update restrict;
+
+alter table RESERVA_DETALLE
+   add constraint FK_RESERVA__RELATIONS_FALLESID foreign key (F_ID)
+      references FALLESIDO (F_ID)
+      on delete restrict on update restrict;
+
+alter table RESERVA_DETALLE
+   add constraint FK_RESERVA__RELATIONS_VELATORI foreign key (VELATORIO_ID)
+      references VELATORIO (VELATORIO_ID)
+      on delete restrict on update restrict;
+
+alter table RESERVA_DETALLE
+   add constraint FK_RESERVA__RELATIONS_EMPLEADO foreign key (EM_ID)
+      references EMPLEADO (EM_ID)
+      on delete restrict on update restrict;
+
+alter table SERVICIO
+   add constraint FK_SERVICIO_RELATIONS_RESERVA_ foreign key (RD_ID)
+      references RESERVA_DETALLE (RD_ID)
+      on delete restrict on update restrict;
+
+alter table TIP_EMPLEADO
+   add constraint FK_TIP_EMPL_RELATIONS_EMPLEADO foreign key (EM_ID)
+      references EMPLEADO (EM_ID)
+      on delete restrict on update restrict;
+
+
+
+/*==============================================================*/
+/*==============================================================*/
+
+/*El tiempo promedio transcurrido entre la defunción y el embalsamamiento de difuntos.*/
+/*AVG funcion para sacar promedios*/
+SELECT 
+  AVG (fallesido.f_horadifuncion) as Hora_Difucion, 
+  AVG (fallesido.f_horaembalsamiento) as Hora_Embalsamiento
+  FROM 
+  public.fallesido;
+/*==============================================================*/
+/*==============================================================*/
+/*Cantidad de veces por cada sala de velación en donde se alquile el espacio y no se venda el ataúd.*/
+SELECT 
+  reserva_detalle.velatorio_id, 
+  count(servicio.ser_ventaataud) as cantidad_de_veces
+FROM 
+  public.reserva_detalle 
+  inner join public.servicio on reserva_detalle.rd_id = servicio.rd_id
+WHERE 
+  servicio.ser_ventaataud is null
+  group by (reserva_detalle.velatorio_id)
+/*==============================================================*/
+/*==============================================================*/
+/*Agentes vendedores que hayan logrado alquilar el espacio y vender el ataúd.*/
+SELECT 
+  tip_empleado.tip_descripcion, 
+  empleado.em_nombre, 
+  empleado.em_apellido, 
+  reserva_detalle.velatorio_id, 
+  servicio.ser_ventaataud
+FROM 
+  public.reserva_detalle
+  inner join public.servicio on reserva_detalle.rd_id = servicio.rd_id
+  inner join public.empleado on empleado.em_id = reserva_detalle.em_id
+  inner join public.tip_empleado on empleado.em_id = tip_empleado.em_id 
+WHERE 
+  tip_empleado.tip_descripcion = 'Vendedor' AND
+  servicio.ser_ventaataud IS NOT NULL;
+/*==============================================================*/
+/*==============================================================*/
+/*Suma total de cada causa de defunción.*/
+SELECT 
+  count(causa_muerte.cm_cancer) AS CANCER, 
+  count(causa_muerte.cm_covid) AS COVID_49, 
+  count(causa_muerte.cm_pulmonia) AS PULMONIA, 
+  count(causa_muerte.cm_derame) AS DERRAME, 
+  count(causa_muerte.cm_parocardiaco) AS PAROCARDIACO
+FROM 
+  public.fallesido, 
+  inner join public.causa_muerte on fallesido.f_id = causa_muerte.f_id
+  
